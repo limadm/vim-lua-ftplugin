@@ -457,9 +457,9 @@ function! xolox#lua#completedynamic(type) " {{{1
     if (a:type == "'" || a:type == '"')
       let prefix = strpart(getline('.'), 0, col('.') - 1)
       if xolox#misc#option#get('lua_complete_omni', 0) && prefix =~ '\<require\s*(\?\s*$'
-        return a:type . "\<C-x>\<C-o>"
+        return a:type . "\<C-x>\<C-o>\<C-p>"
       elseif prefix =~ '\<\(dofile\|loadfile\|io\.open\|io\.lines\|os\.remove\)\s*(\?\s*$'
-        return a:type . "\<C-x>\<C-f>"
+        return a:type . "\<C-x>\<C-f>\<C-p>"
       endif
     elseif a:type == '.'
       let column = col('.') - 1
@@ -470,9 +470,9 @@ function! xolox#lua#completedynamic(type) " {{{1
         " alternative to :silent that can be used inside of <expr>
         " mappings?!
         if xolox#misc#option#get('lua_complete_omni', 0)
-          return a:type . "\<C-x>\<C-o>"
+          return a:type . "\<C-x>\<C-o>\<C-p>"
         else
-          return a:type . "\<C-x>\<C-u>"
+          return a:type . "\<C-x>\<C-u>\<C-p>"
         endif
       endif
     endif
