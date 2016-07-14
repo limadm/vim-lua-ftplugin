@@ -366,7 +366,7 @@ function! xolox#lua#omnifunc(init, base) " {{{1
   " FIXME When you type "require'" without a space in between
   " the getline('.') call below returns an empty string?!
   let pattern = '^' . xolox#misc#escape#pattern(a:base)
-  if getline('.') =~ 'require[^''"]*[''"]'
+  if getline('.') =~ 'require[( ]*[''"]'
     let candidates = filter(copy(s:omnifunc_modules), 'v:val =~ pattern')
     call xolox#misc#msg#debug("lua.vim %s: Completing %i module name(s).", g:xolox#lua#version, len(candidates))
   elseif a:base == ''
